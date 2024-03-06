@@ -10,4 +10,9 @@
     <Folder Include="Powrshell\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="workflows\dotnet.yml" />
+    <None Include="workflows\main-deploy.yaml" />
+  </ItemGroup>
+
 </Project>

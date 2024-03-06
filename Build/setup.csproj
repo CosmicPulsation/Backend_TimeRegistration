@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include=".github\workflows\dotnet.yml" />
-    <None Include=".github\workflows\main-deploy.yaml" />
+    <None Include="workflows\dotnet.yml" />
+    <None Include="workflows\main-deploy.yaml" />
   </ItemGroup>
 
 </Project>
