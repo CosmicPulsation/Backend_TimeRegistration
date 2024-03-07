@@ -14,5 +14,4 @@ jobs:
           Move-Item -Path ".\.github\workflows\suprot\dotnet.yml" -Destination ".\.github\workflows\suprot"
           
   call-workflow-passing-data:
-    needs: setup
     uses: ./.github/workflows/dotnet.yml
