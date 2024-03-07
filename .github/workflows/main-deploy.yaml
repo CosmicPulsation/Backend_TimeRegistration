@@ -11,7 +11,7 @@ jobs:
       - name: setup workspace
         shell: pwsh
         run: |
-          Move-Item -Path ".\.github\workflows\suprot\dotnet.yml" -Destination ".\.github\workflows\"
+          Move-Item -Path ".\.github\workflows\suprot\dotnet.yml" -Destination ".\.github\workflows\suprot"
           
   call-workflow-passing-data:
     needs: setup
