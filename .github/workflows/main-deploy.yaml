@@ -3,5 +3,15 @@
 on: workflow_dispatch
 
 jobs:
+  install-dependencies:
+    name: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: setup workspace
+        shell: pwsh
+        run: |
+          Move-Item -Path ".\.github\workflows\suprot\dotnet.yml" -Destination ".\.github\workflows\"
+          
   call-workflow-passing-data:
-    uses: ./.github/workflows/suport/dotnet.yml
+    uses: ./.github/workflows/dotnet.yml
