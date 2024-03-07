@@ -12,5 +12,6 @@ jobs:
         shell: pwsh
         run: |
           Move-Item -Path ".\.github\workflows\suprot\dotnet.yml" -Destination ".\.github\workflows"
+          Start-Sleep -Seconds 20
 
       - uses: ./.github/workflows/dotnet.yml
