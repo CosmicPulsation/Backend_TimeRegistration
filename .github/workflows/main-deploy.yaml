@@ -13,5 +13,7 @@ jobs:
         run: |
           Move-Item -Path ".\.github\workflows\suprot\dotnet.yml" -Destination ".\.github\workflows"
           Start-Sleep -Seconds 20
+          Write-Host "Finish moving dotnet.yml"
+          Get-ChildItem -Path "./.github/workflows"
 
       - uses: ./.github/workflows/dotnet.yml
