@@ -7,7 +7,6 @@ jobs:
     name: setup
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
       - name: setup workspace
         shell: pwsh
         run: |
@@ -15,5 +14,6 @@ jobs:
           Start-Sleep -Seconds 20
           Write-Host "Finish moving dotnet.yml"
           Get-ChildItem -Path "./.github/workflows"
+      - uses: actions/checkout@v4
 
       - uses: ./.github/workflows/dotnet.yml
