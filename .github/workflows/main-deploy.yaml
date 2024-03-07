@@ -4,4 +4,4 @@ on: workflow_dispatch
 
 jobs:
   call-workflow-passing-data:
-    uses: ./.github/workflows/dotnet.yml
+    uses: ./.github/workflows/suport/dotnet.yml
