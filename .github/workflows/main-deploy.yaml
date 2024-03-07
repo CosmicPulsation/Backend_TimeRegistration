@@ -3,9 +3,5 @@
 on: workflow_dispatch
 
 jobs:
-  setup-worksapce:
-    name: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/workflows/suprot.dotnet.yml
+  run-tests:
+    uses: ./.github/workflows/suprot.dotnet.yml
