@@ -1,1 +1,7 @@
-﻿
+﻿name: mainpipline
+
+on: workflow_dispatch
+
+jobs:
+  call-workflow-passing-data:
+    uses: ./.github/workflows/dotnet.yml
