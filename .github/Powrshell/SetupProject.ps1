@@ -1,10 +1,8 @@
 ﻿
-
-Remove-Item -Path "$PSScriptRoot\..\bin" -Force
-dotnet build ".\.github\Setup.csproj" --configuration Release --force 
+dotnet build ".\.github\Setup.csproj" --configuration Release --no-incremental
 
 $ExicutionPath = Resolve-Path -Path "$PSScriptRoot\..\bin\Release\*\Powrshell"
 
-Import-Module "$ExicutionPath\Setup\SetupGitHooks.psm1"
+Import-Module "$ExicutionPath\Setup\GitHooksSetup.psm1" -force
 
 SetupGitHooks
