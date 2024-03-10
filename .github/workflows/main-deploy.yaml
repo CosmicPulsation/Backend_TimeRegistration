@@ -11,4 +11,4 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps: 
-      - run: echo ${{ needs.run-tests }}
+      - run: echo ${{ needs.run-tests.result }}
