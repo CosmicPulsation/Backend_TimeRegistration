@@ -22,7 +22,7 @@
 
 	foreach ($gitHook in $GitHooks)
 	{
-		AddGitHook -GitHook $gitHook -DotGitPath $dotGitPath
+		AddGitHook -GitHook $gitHook -DotGitPath $dotGitPath -ScriptPath "$PSScriptRoot\..\GitHooks"
 	}
     # Allow execution
     Write-Output "Setting execution policy on git hook post-merge file" -ForegroundColor Cyan
@@ -45,11 +45,14 @@ function AddGitHook
     [Parameter(Mandatory=$true)]
     [string]$GitHook,
 	[Parameter(Mandatory=$true)]
-	[string]$DotGitPath
+	[string]$DotGitPath,
+	[Parameter(Mandatory=$true)]
+	[string]$ScriptPath
 	)
-	$GitHookPath = $DotGitPath + "\hooks" + $GitHook + "."
+	$GitHookPath = $DotGitPath + "\hooks\" + $GitHook
+	Write-Output $GitHookPath
 
 	$fileContent = "#!/bin/sh`r`n"
-    $fileContent += 'C:\\windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe -Command "start powershell "C:\\Projects\\TimeRegistration\\.github\\Powrshell\\GitHooks\\Test.ps1" -Wait"'
-	Set-Content $gitHookPostMergeFileUri $fileContent -Force
+    $fileContent += "C:\\windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe -Command ""start powershell ""$ScriptPath\Test.ps1"" -Wait"""
+	Set-Content $GitHookPath $fileContent -Force
 }
