@@ -8,3 +8,4 @@ CompileWorkfolw
 Write-Host "Script was run"
 
 Start-Sleep 20
+Write-Host "Script complidet"
