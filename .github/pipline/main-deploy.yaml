@@ -11,4 +11,4 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps: 
-      - run: echo ${{ github.job }}
+      - run: echo ${{ needs.run-tests }}
