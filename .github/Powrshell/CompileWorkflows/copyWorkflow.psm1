@@ -4,6 +4,10 @@
 	$pastPath = ".\.github\workflows"
 	
 	$workflows = Get-ChildItem -Path $path -Filter "*.yaml" –depth 10 | Select-Object -ExpandProperty Fullname
+	
+	Write-Host "Clear: $pastPath" -ForegroundColor Cyan
+	Remove-Item -Path "$pastPath\*"
+	Start-Sleep 5
 
 	foreach ($workflow in  $workflows )
 	{
