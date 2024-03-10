@@ -1,12 +1,12 @@
 ﻿function SetupGitHooks
 {
-	Write-Host "Start Setup Git Hooks"
+	Write-Host "Start Setup Git Hooks" -ForegroundColor Cyan
 	$GitHooks = GetGitHools
 	$dotGitPath = $PSScriptRoot
 	$foldercount = ([regex]::Matches($PSScriptRoot, "\\" )).count
-	Write-Host "Folder depth: $foldercount"
+	Write-Host "Folder depth: $foldercount" -ForegroundColor Cyan
 	$dotGitPath += "\..\"
-	Write-Host "Initila .git path: $dotGitPath"
+	Write-Host "Initila .git path: $dotGitPath" -ForegroundColor Cyan
 
 	for ($i = 1; $i -lt $foldercount; $i++)
 	{
@@ -18,17 +18,17 @@
 	}
 
 	$dotGitPath += ".git"
-	Write-Host ".Git Path: $dotGitPath"
+	Write-Host ".Git Path: $dotGitPath" -ForegroundColor Cyan
 
 	foreach ($gitHook in $GitHooks)
 	{
 		AddGitHook -GitHook $gitHook -DotGitPath $dotGitPath -ScriptPath "$PSScriptRoot\..\GitHooks"
 	}
     # Allow execution
-    Write-Output "Setting execution policy on git hook post-merge file" -ForegroundColor Cyan
+    Write-Host "Setting execution policy on git hook post-merge file" -ForegroundColor Cyan
     Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
 
-	Write-Host "End Setup Git Hooks"
+	Write-Host "End Setup Git Hooks" -ForegroundColor Cyan
 }
 
 function GetGitHools
@@ -50,10 +50,10 @@ function AddGitHook
 	[string]$ScriptPath
 	)
 	$GitHookPath = $DotGitPath + "\hooks\" + $GitHook
-	Write-Output $GitHookPath
+	Write-Host $GitHookPath -ForegroundColor Cyan
 
 	$ScriptLocation = "$ScriptPath\Test.ps1" -replace "\\", "\\\\"
 	$fileContent = "#!/bin/sh`r`n"
     $fileContent += "C:\\windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe -Command ""start powershell '$ScriptPath\$GitHook.ps1' -Wait"""
-	Set-Content $GitHookPath $fileContent -Force
+	Set-Content -Path $GitHookPath -Value $fileContent -Force
 }
