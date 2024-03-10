@@ -7,5 +7,4 @@ $ExicutionPath = Resolve-Path -Path "$PSScriptRoot\..\CompileWorkflows\copyWorkf
 Import-Module $ExicutionPath -force
 CompileWorkfolw
 
-Start-Sleep 20
 Write-Host "Script complidet"
