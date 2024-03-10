@@ -9,7 +9,7 @@
 	{
 		$relativePath = $workflow.Replace("$path\", "")
 		$relativePath = $relativePath -replace "\\", "."
-		Write-Host "Copy documents:`r`n $workflow -> $pastPath\$relativePath"
+		Write-Host "Copy documents:`r`n $workflow -> $pastPath\$relativePath" -ForegroundColor Cyan
 		Copy-Item -Path $workflow -Destination "$pastPath\$relativePath"
 	}
 	git add "$pastPath\*"
