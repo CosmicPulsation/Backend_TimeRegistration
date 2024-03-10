@@ -2,6 +2,7 @@
 
 on: workflow_dispatch
 
+
 jobs:
   run-tests:
-    uses: ./.github/workflows/suprot.dotnet.yml
+    uses: ./.github/workflows/suprot.dotnet.yaml
