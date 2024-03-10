@@ -9,5 +9,6 @@ jobs:
   validate-pipline:
     needs: [run-tests]
     if: always()
+    runs-on: ubuntu-latest
     steps: 
       - run: echo ${{ github.job }}
