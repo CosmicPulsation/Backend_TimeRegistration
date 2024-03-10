@@ -12,14 +12,4 @@ public class Test
         // Assert
         test.Should().BeTrue();
     }
-    [Fact]
-    public void FailingTest()
-    {
-        // Act
-        bool test = false;
-
-        // Assert
-        test.Should().BeTrue();
-
-    }
 }
