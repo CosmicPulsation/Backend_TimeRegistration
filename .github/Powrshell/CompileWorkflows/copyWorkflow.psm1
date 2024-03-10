@@ -7,7 +7,6 @@
 	
 	Write-Host "Clear: $pastPath" -ForegroundColor Cyan
 	Remove-Item -Path "$pastPath\*"
-	Start-Sleep 5
 
 	foreach ($workflow in  $workflows )
 	{
