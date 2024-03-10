@@ -52,7 +52,8 @@ function AddGitHook
 	$GitHookPath = $DotGitPath + "\hooks\" + $GitHook
 	Write-Output $GitHookPath
 
+	$ScriptLocation = "$ScriptPath\Test.ps1" -replace "\\", "\\\\"
 	$fileContent = "#!/bin/sh`r`n"
-    $fileContent += "C:\\windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe -Command ""start powershell ""$ScriptPath\Test.ps1"" -Wait"""
+    $fileContent += "C:\\windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe -Command ""start powershell '$ScriptPath\Test.ps1' -Wait"""
 	Set-Content $GitHookPath $fileContent -Force
 }

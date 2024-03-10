@@ -1,5 +1,5 @@
 ﻿
-dotnet build ".\.github\Setup.csproj" --configuration Release --no-incremental
+dotnet build ".\.github\Setup.csproj" --configuration Release --no-incremental -force
 
 $ExicutionPath = Resolve-Path -Path "$PSScriptRoot\..\bin\Release\*\Powrshell"
 
