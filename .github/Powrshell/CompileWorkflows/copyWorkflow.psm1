@@ -9,6 +9,7 @@
 	{
 		$relativePath = $workflow.Replace("$path\", "")
 		$relativePath = $relativePath -replace "\\", "."
+		Write-Host "Copy documents:`r`n $workflow -> $pastPath\$relativePath"
 		Copy-Item -Path $workflow -Destination "$pastPath\$relativePath"
 	}
 }
