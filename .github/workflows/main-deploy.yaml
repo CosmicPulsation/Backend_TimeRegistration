@@ -11,4 +11,15 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps: 
-      - run: echo ${{ needs.run-tests.result }}
+      - name: validate privaios jobs
+        shell: pwsh
+        run: |
+          $status = ${{ needs.run-tests.result }} != "failure"
+          if($status)
+          {
+            exit
+          }
+          else
+          {
+            throw
+          }
