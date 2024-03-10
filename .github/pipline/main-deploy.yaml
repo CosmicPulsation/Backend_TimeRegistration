@@ -7,7 +7,7 @@ jobs:
     uses: ./.github/workflows/suprot.dotnet-test.yaml
 
   validate-pipline:
-    if: success()
     needs: [run-tests]
+    if: always()
     steps: 
       - run: echo ${{ github.job }}
