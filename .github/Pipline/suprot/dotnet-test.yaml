@@ -5,13 +5,19 @@ name: .NET
 
 on:
   workflow_call:
+    outputs:
+      resourcePath:
+        description: "base oath to resoureces"
+        value: ${{ jobs.reusable_workflow_job.outputs.BuildParh }}
 
 jobs:
   reusable_workflow_job:
     runs-on: ubuntu-latest
+    outputs:
+      BuildParh: ${{ steps.vars.outputs.Parh }}
     steps:
     - uses: actions/checkout@v4
-  
+      BuildParh:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:

@@ -15,7 +15,7 @@ jobs:
         shell: pwsh
         run: |
           $status = "${{ needs.run-tests.result }}" -ne "failure"
-          Write-Host "${{ needs.reusable_workflow_job.outputs.Parh }}"
+          Write-Host "${{ needs.r/reusable_workflow_job.outputs.Parh }}"
           if($status)
           {
             exit
