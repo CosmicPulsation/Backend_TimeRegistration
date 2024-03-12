@@ -11,13 +11,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+  
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+
     - name: Restore dependencies
       run: dotnet restore
+
     - name: Build
       run: dotnet build --no-restore
+
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      
+    - name: get path to main.bicep
+      shell: pwsh
+      id: vars
+      run: |
+        $Parh = Resolve-Path -path ".\*\.github\bin\Release\net*"
+        Write-Output "PATH::$Parh" >> $GITHUB_OUTPUT
+
+    - name: test parameters
+      shell: pwsh
+      run: |
+        Write-Host "${{ steps.vars.outputs.PATH }}"

@@ -26,7 +26,6 @@ public class Test
         // Act
         button.Click();
 
-
         // Assert
         var Status = render.Find("[data-testid=\"Status indicator\"]");
         Status.TextContent.Should().BeEquivalentTo("Status: Working");

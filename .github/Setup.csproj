@@ -12,10 +12,15 @@
     </None>
   </ItemGroup>
 
-	<ItemGroup>
-		<None Update="Powrshell\**">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
+  <ItemGroup>
+	<None Update="Powrshell\**">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</None>
+  </ItemGroup>
 
+  <ItemGroup>
+	<None Update="Bicep\**">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</None>
+  </ItemGroup>
 </Project>

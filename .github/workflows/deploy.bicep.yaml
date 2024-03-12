@@ -1,7 +1,4 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
-name: .NET
+﻿name: Deploy bicep
 
 on:
   workflow_call:
@@ -11,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-  
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
@@ -23,9 +20,6 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
 
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-      
     - name: get path to main.bicep
       shell: pwsh
       id: vars
@@ -33,7 +27,15 @@ jobs:
         $Parh = Resolve-Path -path ".\*\.github\bin\Release\net*"
         Write-Output "PATH::$Parh" >> $GITHUB_OUTPUT
 
-    - name: test parameters
-      shell: pwsh
-      run: |
-        Write-Host "${{ steps.vars.outputs.PATH }}"
+    - name: Log into Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Deploy Bicep file
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: 'cb669899-ef90-41ee-a679-686c45a3d93f'
+        template: ${{ steps.vars.outputs.docker_tag }}/Bicep/main.bicep
+        parameters: 'storagePrefix=mystore storageSKU=Standard_LRS'
+        failOnStdErr: false
