@@ -6,7 +6,7 @@ name: .NET
 on:
   workflow_call:
     outputs:
-      resourcePath:
+      BuildParh:
         description: "base oath to resoureces"
         value: ${{ jobs.reusable_workflow_job.outputs.BuildParh }}
 
