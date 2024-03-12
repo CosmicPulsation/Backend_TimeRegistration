@@ -37,4 +37,4 @@ jobs:
     - name: test parameters
       shell: pwsh
       run: |
-        Write-Host "${{ steps.vars.outputs.PATH }}"
+        Write-Host "${{ steps.vars.outputs.Parh }}"
