@@ -7,7 +7,7 @@ jobs:
     uses: ./.github/workflows/suprot.dotnet-test.yaml
 
   validate-pipline:
-    needs: [run-tests]
+    needs: [run-tests, reusable_workflow_job]
     if: always()
     runs-on: ubuntu-latest
     steps: 
@@ -15,7 +15,7 @@ jobs:
         shell: pwsh
         run: |
           $status = "${{ needs.run-tests.result }}" -ne "failure"
-          Write-Host "${{ needs.run-tests.outputs.Parh }}"
+          Write-Host "${{ needs.reusable_workflow_job.outputs.Parh }}"
           if($status)
           {
             exit
