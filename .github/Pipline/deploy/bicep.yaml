@@ -25,7 +25,7 @@ jobs:
       id: vars
       run: |
         $Parh = Resolve-Path -path ".\*\.github\bin\Release\net*"
-        Write-Output "PATH::$Parh" >> $GITHUB_OUTPUT
+        Write-Output "PATH=$Parh" >> $GITHUB_OUTPUT
 
     - name: Log into Azure
       uses: azure/login@v1

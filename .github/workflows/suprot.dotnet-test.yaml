@@ -31,7 +31,8 @@ jobs:
       id: vars
       run: |
         $Parh = ".\*\.github\bin\Release\net*"
-        Write-Output "PATH=$Parh" >> $GITHUB_OUTPUT
+        echo ::set-output name=Parh::$( $Parh)
+        Write-Output "Parh=$($Parh)" >> $Env:GITHUB_OUTPUT
 
     - name: test parameters
       shell: pwsh
