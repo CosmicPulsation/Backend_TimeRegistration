@@ -6,14 +6,6 @@ jobs:
   run-tests:
     uses: ./.github/workflows/suprot.dotnet-test.yaml
 
-
-  test-value:
-    runs-on: ubuntu-latest
-    steps: 
-      shell: pwsh
-      run: |
-        Write-Output "::set-output name=GREET::$Parh"
-
   validate-pipline:
     needs: [run-tests, test-value]
     if: always()
