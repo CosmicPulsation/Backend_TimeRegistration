@@ -2,6 +2,13 @@
 
 on:
   workflow_call:
+    inputs:
+      buildPath:
+        required: true
+        type: string
+      subscriptionId:
+        required: true
+        type: string
 
 jobs:
   reusable_workflow_job:
@@ -35,7 +42,7 @@ jobs:
     - name: Deploy Bicep file
       uses: azure/arm-deploy@v1
       with:
-        subscriptionId: 'cb669899-ef90-41ee-a679-686c45a3d93f'
-        template: ${{ steps.vars.outputs.docker_tag }}/Bicep/main.bicep
+        subscriptionId: ${{ inputs.subscriptionId }}
+        template: ${{ inputs.buildPath }}/Bicep/main.bicep
         parameters: 'storagePrefix=mystore storageSKU=Standard_LRS'
         failOnStdErr: false

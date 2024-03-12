@@ -15,7 +15,6 @@ jobs:
         shell: pwsh
         run: |
           $status = "${{ needs.run-tests.result }}" -ne "failure"
-          Write-Host "${{ needs.run-tests.outputs.BuildParh }}"
           if($status)
           {
             exit
@@ -24,3 +23,11 @@ jobs:
           {
             throw
           }
+
+  build-deploy:
+    needs: [validate-pipline]
+    if: ${{ needs.dep1.result == 'success' }}
+    uses: ./.github/workflows/deploy.deploy-bicep.yaml
+    with:
+      buildPath: ${{ needs.run-tests.outputs.BuildParh }}
+      subscriptionId: 'cb669899-ef90-41ee-a679-686c45a3d93f'
