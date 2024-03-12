@@ -30,7 +30,7 @@ jobs:
       shell: pwsh
       id: vars
       run: |
-        $Parh = ".\*\.github\bin\Release\net*"
+        $Parh = $Parh = Resolve-Path -path ".github\bin\Release\net*"
         echo ::set-output name=Parh::$( $Parh)
         Write-Output "Parh=$($Parh)" >> $Env:GITHUB_OUTPUT
 
