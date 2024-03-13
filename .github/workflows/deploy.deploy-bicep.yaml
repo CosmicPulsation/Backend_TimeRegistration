@@ -27,13 +27,6 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
 
-    - name: get path to main.bicep
-      shell: pwsh
-      id: vars
-      run: |
-        $Parh = Resolve-Path -path ".github\bin\Release\net*"
-        Write-Output "PATH=$Parh" >> $GITHUB_OUTPUT
-
     - name: Log into Azure
       uses: azure/login@v1
       with:
