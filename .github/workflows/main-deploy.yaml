@@ -26,7 +26,7 @@ jobs:
 
   build-deploy:
     needs: [validate-pipline]
-    if: ${{ needs.dep1.result == 'success' }}
+    if: ${{ needs.validate-pipline.result == 'success' }}
     uses: ./.github/workflows/deploy.deploy-bicep.yaml
     with:
       buildPath: ${{ needs.run-tests.outputs.BuildParh }}
