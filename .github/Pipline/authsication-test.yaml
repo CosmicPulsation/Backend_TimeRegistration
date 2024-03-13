@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
+    - name: tjek out
+      uses: actions/checkout@v4
+
     - uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
