@@ -1,4 +1,12 @@
-﻿on: workflow_dispatch
+﻿on: 
+  workflow_dispatch:
+    inputs:
+      buildPath:
+        required: true
+        type: string
+      subscriptionId:
+        required: true
+        type: string
 
 name: Run Azure Login With a Service Principal Secret
 
@@ -32,3 +40,11 @@ jobs:
         azcliversion: latest
         inlineScript: |
           az account show
+
+    - name: Deploy Bicep file
+      uses: azure/arm-deploy@v2
+      with:
+        subscriptionId: ${{ inputs.subscriptionId }}
+        template: ${{ inputs.buildPath }}/Bicep/main.bicep
+        parameters: 'storagePrefix=mystore storageSKU=Standard_LRS'
+        failOnStdErr: false
