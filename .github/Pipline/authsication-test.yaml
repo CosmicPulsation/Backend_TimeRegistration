@@ -45,6 +45,7 @@ jobs:
       uses: azure/arm-deploy@v2
       with:
         scope: subscription
+        region: northeurope
         subscriptionId: ${{ inputs.subscriptionId }}
         template: ${{ inputs.buildPath }}/Bicep/main.bicep
         parameters: 'storagePrefix=mystore storageSKU=Standard_LRS'
