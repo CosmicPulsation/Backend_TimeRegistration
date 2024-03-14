@@ -28,7 +28,7 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build ".\.github\Setup.csproj" --configuration Release --no-restore --force
 
     - uses: azure/login@v2
       with:
