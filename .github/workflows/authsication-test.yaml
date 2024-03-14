@@ -44,6 +44,7 @@ jobs:
     - name: Deploy Bicep file
       uses: azure/arm-deploy@v2
       with:
+        scope: subscription
         subscriptionId: ${{ inputs.subscriptionId }}
         template: ${{ inputs.buildPath }}/Bicep/main.bicep
         parameters: 'storagePrefix=mystore storageSKU=Standard_LRS'
