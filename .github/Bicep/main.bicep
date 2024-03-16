@@ -1,6 +1,6 @@
 ﻿
-var resourceGroupName string = 'Timeregistration-UI'
-var resourceGroupLocation string = 'westeurope'
+var resourceGroupName = 'Timeregistration-UI'
+var resourceGroupLocation = 'westeurope'
 
 
 resource deployresourcegroop 'Microsoft.Resources/resourceGroups@2022-09-01' = {
