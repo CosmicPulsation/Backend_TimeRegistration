@@ -39,10 +39,6 @@ jobs:
     - name: Build
       run: dotnet build ".\.github\Setup.csproj" --configuration Release --no-restore --force
 
-    - name: Test Secrets
-      shell: pwsh
-      run: Write-Host "${{ secrets.TEST }}"
-
     - uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}

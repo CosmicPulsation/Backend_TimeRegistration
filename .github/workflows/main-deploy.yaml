@@ -31,3 +31,4 @@ jobs:
     with:
       buildPath: '${{ needs.run-tests.outputs.BuildParh }}'
       subscriptionId: 'cb669899-ef90-41ee-a679-686c45a3d93f'
+    secrets: inherit
