@@ -48,5 +48,5 @@ jobs:
         region: northeurope
         subscriptionId: ${{ inputs.subscriptionId }}
         template: ${{ inputs.buildPath }}/Bicep/main.bicep
-        parameters: 'storagePrefix=mystore storageSKU=Standard_LRS'
+        parameters: 'resourceGroupLocation=westeurope resourceGroupName=Timeregistration-UI'
         failOnStdErr: false
