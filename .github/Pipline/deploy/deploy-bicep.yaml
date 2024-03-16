@@ -1,6 +1,15 @@
 ﻿name: Deploy bicep
 
 on:
+  workflow_dispatch:
+    inputs:
+      buildPath:
+        required: true
+        type: string
+      subscriptionId:
+        required: true
+        type: string
+
   workflow_call:
     inputs:
       buildPath:
