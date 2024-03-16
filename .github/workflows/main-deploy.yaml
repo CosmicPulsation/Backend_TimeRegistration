@@ -26,10 +26,7 @@ jobs:
 
   build-deploy:
     needs: [validate-pipline]
-    if: ${{ needs.validate-pipline.result == 'success' }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: ./.github/workflows/deploy.deploy-bicep.yaml
-        with:
-          buildPath: ${{ needs.run-tests.outputs.BuildParh }}
-          subscriptionId: 'cb669899-ef90-41ee-a679-686c45a3d93f'
+    uses: ./.github/workflows/deploy.deploy-bicep.yaml
+    with:
+      buildPath: ${{ needs.run-tests.outputs.BuildParh }}
+      subscriptionId: 'cb669899-ef90-41ee-a679-686c45a3d93f'
