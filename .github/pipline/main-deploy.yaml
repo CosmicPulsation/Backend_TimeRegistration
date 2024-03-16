@@ -25,7 +25,7 @@ jobs:
           }
 
   build-deploy:
-    needs: [validate-pipline]
+    needs: [validate-pipline, run-tests]
     uses: ./.github/workflows/deploy.deploy-bicep.yaml
     with:
       buildPath: ${{ needs.run-tests.outputs.BuildParh }}
