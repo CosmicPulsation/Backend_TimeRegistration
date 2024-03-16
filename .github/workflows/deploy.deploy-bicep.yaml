@@ -11,19 +11,42 @@ on:
         type: string
 
 jobs:
-  reusable_workflow_job:
+
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+    
+    - name: tjek out
+      uses: actions/checkout@v4
 
-    - name: Log into Azure
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build ".\.github\Setup.csproj" --configuration Release --no-restore --force
+
     - uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: latest
+        inlineScript: |
+          az account show
 
     - name: Deploy Bicep file
       uses: azure/arm-deploy@v2
       with:
+        scope: subscription
+        region: northeurope
         subscriptionId: ${{ inputs.subscriptionId }}
         template: ${{ inputs.buildPath }}/Bicep/main.bicep
-        parameters: 'storagePrefix=mystore storageSKU=Standard_LRS'
+        parameters: 'resourceGroupLocation=westeurope resourceGroupName=Timeregistration-UI'
         failOnStdErr: false
