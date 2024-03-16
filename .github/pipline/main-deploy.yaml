@@ -27,6 +27,7 @@ jobs:
   build-deploy:
     needs: [validate-pipline]
     if: ${{ needs.validate-pipline.result == 'success' }}
+    runs-on: ubuntu-latest
     steps:
       - uses: ./.github/workflows/deploy.deploy-bicep.yaml
         with:
