@@ -10,5 +10,8 @@ resource deployResourceGroop 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 
 module getServicePlan 'moduls/ServicePlan.bicep' = {
   scope: deployResourceGroop
-  location: resourceGroupLocation
+  name: "ServicePlan"
+  params: {
+	location: resourceGroupLocation
+  }
 }
