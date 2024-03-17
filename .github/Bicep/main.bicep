@@ -8,12 +8,6 @@ resource deployResourceGroop 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   location: resourceGroupLocation
 }
 
-resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
-  scope: deployResourceGroop
-  name: 'test-deploy'
-  location: resourceGroupLocation
-  sku: {
-    name: 'F1'
-  }
-  kind: 'windows'
+module getServicePlan 'moduls/ServicePlan.bicep' = {
+  scope: resourceGroup(deployResourceGroop)
 }
