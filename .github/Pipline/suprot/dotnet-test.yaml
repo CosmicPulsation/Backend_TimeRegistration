@@ -6,15 +6,15 @@ name: .NET
 on:
   workflow_call:
     outputs:
-      BuildParh:
+      BuildPath:
         description: "base oath to resoureces"
-        value: ${{ jobs.reusable_workflow_job.outputs.BuildParh }}
+        value: ${{ jobs.reusable_workflow_job.outputs.BuildPath }}
 
 jobs:
   reusable_workflow_job:
     runs-on: ubuntu-latest
     outputs:
-      BuildParh: ${{ steps.vars.outputs.Parh }}
+      BuildPath: ${{ steps.vars.outputs.Path }}
     steps:
     - uses: actions/checkout@v4
   
@@ -36,11 +36,13 @@ jobs:
       shell: pwsh
       id: vars
       run: |
-        $Parh = Resolve-Path -path ".github\bin\Release\net*"
-        echo ::set-output name=Parh::$( $Parh)
-        Write-Output "Parh=$($Parh)" >> $Env:GITHUB_OUTPUT
+        $Path = Resolve-Path -path ".github\bin\Release\net*"
+        $base = Resolve-Path -path ".\"
+        $Path = $Path.Path.Replace("$base", "." )
+        echo ::set-output name=Parh::$( $Path)
+        Write-Output "Path=$($Path)" >> $Env:GITHUB_OUTPUT
 
     - name: test parameters
       shell: pwsh
       run: |
-        Write-Host "${{ steps.vars.outputs.Parh }}"
+        Write-Host "${{ steps.vars.outputs.Path }}"
