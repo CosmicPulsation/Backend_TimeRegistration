@@ -1,8 +1,9 @@
-﻿
+﻿param location string
+
 resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
 
   name: 'test-deploy'
-  location: resourceGroup().location
+  location: location
   sku: {
     name: 'F1'
   }
