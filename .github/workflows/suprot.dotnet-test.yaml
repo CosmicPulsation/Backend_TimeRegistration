@@ -12,7 +12,7 @@ on:
 
 jobs:
   reusable_workflow_job:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     outputs:
       BuildPath: ${{ steps.vars.outputs.Path }}
     steps:
