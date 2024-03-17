@@ -49,6 +49,6 @@ jobs:
         scope: subscription
         region: northeurope
         subscriptionId: ${{ inputs.subscriptionId }}
-        template: ${{ inputs.buildPath }}/Bicep/main.bicep
+        template: ${{ inputs.buildPath }}/bicep/main.bicep
         parameters: 'resourceGroupLocation=westeurope resourceGroupName=Timeregistration-UI'
         failOnStdErr: false
