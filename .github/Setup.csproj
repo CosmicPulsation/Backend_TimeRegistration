@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-	<None Update="Bicep\**">
+	<None Update="bicep\**">
 	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	</None>
   </ItemGroup>
