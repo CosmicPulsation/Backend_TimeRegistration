@@ -14,7 +14,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
 }
 
 resource appService 'Microsoft.Web/sites@2022-09-01' = {
-    name: 'Time-Registration'
+    name: 'tidslog'
     location: location
     properties:{
         serverFarmId: appServicePlan.id
