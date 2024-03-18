@@ -9,3 +9,11 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
   }
   kind: 'windows'
 }
+
+resource symbolicname ' @2022-09-01' = {
+    name: 'Time-Registration'
+    location: location
+    properties:{
+        serverFramId: appServicePlan.id
+    }
+}
