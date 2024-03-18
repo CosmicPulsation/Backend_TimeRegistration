@@ -1,5 +1,8 @@
 ﻿param location string
 
+var repositoryUrl = 'https://github.com/herniklanger/TimeRegistration'
+var branch = 'main'
+
 resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
 
   name: 'test-deploy'
@@ -10,10 +13,21 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
   kind: 'windows'
 }
 
-resource symbolicname ' @2022-09-01' = {
+resource appService 'Microsoft.Web/sites@2022-09-01' = {
     name: 'Time-Registration'
     location: location
     properties:{
         serverFramId: appServicePlan.id
+        siteConfig: {
+            netFrameworkVersion: 'v8.0'
+        }
     }
 }
+
+// resource srcControls 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
+//   name: '${appService.name}/web'
+//   properties: {
+//     repoUrl: repositoryUrl
+//     branch: branch
+//   }
+// }
