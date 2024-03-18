@@ -17,7 +17,7 @@ resource appService 'Microsoft.Web/sites@2022-09-01' = {
     name: 'Time-Registration'
     location: location
     properties:{
-        serverFramId: appServicePlan.id
+        serverFarmId: appServicePlan.id
         siteConfig: {
             netFrameworkVersion: 'v8.0'
         }
