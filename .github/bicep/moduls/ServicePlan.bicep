@@ -1,7 +1,7 @@
 ﻿param location string
 
-var repositoryUrl = 'https://github.com/herniklanger/TimeRegistration'
-var branch = 'main'
+// var repositoryUrl = 'https://github.com/herniklanger/TimeRegistration'
+// var branch = 'main'
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
 
