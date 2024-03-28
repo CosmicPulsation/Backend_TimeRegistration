@@ -19,6 +19,10 @@ on:
         required: true
         type: string
 
+  env:
+    AZURE_SERVICE_NAME: 'tidslog'
+    AZURE_SERVICE_PACKAGE_PATH: './publish'
+
 jobs:
 
   build-and-deploy:
@@ -40,7 +44,7 @@ jobs:
       run: dotnet build ".\TimeRegistration.sln" --configuration Release --no-restore --force
 
     - name: Publish
-      run: dotnet publish ".\TimeRegistration\TimeRegistration\TimeRegistration.csproj" --configuration Release --no-build
+      run: dotnet publish ".\TimeRegistration\TimeRegistration\TimeRegistration.csproj" --configuration Release --no-build --output '${{ env.AZURE_SERVICE_PACKAGE_PATH }}'
 
     - uses: azure/login@v2
       with:
@@ -55,3 +59,10 @@ jobs:
         template: ${{ inputs.buildPath }}/bicep/main.bicep
         parameters: 'resourceGroupLocation=westeurope resourceGroupName=Timeregistration-UI'
         failOnStdErr: false
+
+    - uses: Deployment
+      users: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_SERVICE_NAME }}
+        publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+        package: ${{ env.AZURE_SERVICE_PACKAGE_PATH }}
