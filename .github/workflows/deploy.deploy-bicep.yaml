@@ -19,9 +19,9 @@ on:
         required: true
         type: string
 
-  env:
-    AZURE_SERVICE_NAME: 'tidslog'
-    AZURE_SERVICE_PACKAGE_PATH: './publish'
+env:
+  AZURE_SERVICE_NAME: 'tidslog'
+  AZURE_SERVICE_PACKAGE_PATH: './publish'
 
 jobs:
 
