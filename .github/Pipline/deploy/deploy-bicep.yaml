@@ -60,8 +60,8 @@ jobs:
         parameters: 'resourceGroupLocation=westeurope resourceGroupName=Timeregistration-UI'
         failOnStdErr: false
 
-    - uses: Deployment
-      users: azure/webapps-deploy@v2
+    - name: Deployment
+      uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_SERVICE_NAME }}
         publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
