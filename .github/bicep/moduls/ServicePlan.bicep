@@ -26,8 +26,10 @@ resource appService 'Microsoft.Web/sites@2022-09-01' = {
 
 // resource srcControls 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
 //   name: '${appService.name}/web'
+//   paremt: appService
 //   properties: {
 //     repoUrl: repositoryUrl
 //     branch: branch
+//     isManualIntegration: false
 //   }
 // }
