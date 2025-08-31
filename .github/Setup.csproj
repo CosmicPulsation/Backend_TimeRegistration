@@ -1,26 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+  <Sdk Name="Aspire.AppHost.Sdk" Version="9.0.0" />
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsAspireHost>true</IsAspireHost>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
   <ItemGroup>
     <None Update="Pipline\**">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
   <ItemGroup>
-	<None Update="Powrshell\**">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</None>
+    <None Update="Powrshell\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-
   <ItemGroup>
-	<None Update="bicep\**">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</None>
+    <None Update="bicep\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.4.1" />
   </ItemGroup>
 </Project>
